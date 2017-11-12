@@ -43,7 +43,9 @@ if [ "${OVPN_DNS_SERVERS}x" != "x" ] ; then
   #down /etc/openvpn/update-resolv-conf
  "
 
- FS=',' read -r -a nameservers <<< "$OVPN_DNS_SERVERS"
+ IFS='' 
+ read -r -a nameservers <<< "$OVPN_DNS_SERVERS"
+ IFS=','
  
  for this_dns_server in $nameservers ; do
   echo "push \"dhcp-option DNS $this_dns_server\""

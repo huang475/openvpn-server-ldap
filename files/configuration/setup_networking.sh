@@ -1,5 +1,3 @@
-#Create the VPN tunnel interface
-
 mkdir -p /dev/net
 if [ ! -c /dev/net/tun ]; then
  mknod /dev/net/tun c 10 200
@@ -15,9 +13,9 @@ export this_natdevice=`route | grep '^default' | grep -o '[^ ]*$'`
 
 if [ "${OVPN_ROUTES}x" != "x" ] ; then
 
-  IFS=","
+  IFS=""
   read -r -a route_list <<< "$OVPN_ROUTES"
-
+  IFS=","
   echo "" >/tmp/routes_config.txt
 
   for this_route in ${route_list[@]} ; do
