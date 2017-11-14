@@ -16,7 +16,7 @@ if [ "${OVPN_ROUTES}x" != "x" ] ; then
   IFS=""
   read -r -a route_list <<< "$OVPN_ROUTES"
   IFS=","
-  echo "" >/tmp/routes_config.txt
+  echo "" > /tmp/routes_config.txt
 
   for this_route in ${route_list[@]} ; do
 
